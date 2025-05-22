@@ -4,7 +4,7 @@ import pandas as pd
 
 def load_text_file(file, delimiter):
     try:
-        return pd.read_csv(file, delimiter=delimiter, encoding='utf-8')
+        return pd.read_csv(file, delimiter=delimiter, encoding='utf-8-sig')
     except UnicodeDecodeError:
         try:
             return pd.read_csv(file, delimiter=delimiter, encoding='latin1')  # fallback
