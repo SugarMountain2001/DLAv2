@@ -4,7 +4,13 @@ import pandas as pd
 
 def load_text_file(file, delimiter):
     try:
-        return pd.read_csv(file, delimiter=delimiter)
+        return pd.read_csv(file, delimiter=delimiter, encoding='utf-8')
+    except UnicodeDecodeError:
+        try:
+            return pd.read_csv(file, delimiter=delimiter, encoding='latin1')  # fallback
+        except Exception as e:
+            st.error(f"Error loading file with fallback encoding: {e}")
+            return None
     except Exception as e:
         st.error(f"Error loading file: {e}")
         return None
