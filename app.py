@@ -22,8 +22,8 @@ def main():
 
 Both files must include a header row. They should both have a **Barcode** column to match on.""")
 
-    export_file = st.file_uploader("Upload Horizon Export File (TSV)", type=["txt", "tsv"])
-    scanned_file = st.file_uploader("Upload Scanned Inventory File (CSV)", type=["csv", "txt"])
+    export_file = st.file_uploader("Upload Horizon Export File (TSV or TXT)", type=["txt", "tsv"])
+    scanned_file = st.file_uploader("Upload Scanned Inventory File (CSV or TXT)", type=["csv", "txt"])
 
     if export_file and scanned_file:
         export_df = load_text_file(export_file, delimiter='\t')
