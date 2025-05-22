@@ -5,18 +5,13 @@ import pandas as pd
 def load_text_file(file, delimiter):
     try:
         return pd.read_csv(file, delimiter=delimiter, encoding='utf-8-sig')
-    except UnicodeDecodeError:
-        try:
-            return pd.read_csv(file, delimiter=delimiter, encoding='latin1')  # fallback
-        except Exception as e:
-            st.error(f"Error loading file with fallback encoding: {e}")
-            return None
+   
     except Exception as e:
         st.error(f"Error loading file: {e}")
         return None
 
 def main():
-    st.title("Library Inventory Comparison Tool (Text File Version)")
+    st.title("Library Inventory Comparison Tool v2 (Text File Version)")
 
     st.markdown("""Upload your **Horizon export** file (tab-separated) and your **inventory wand** file (comma-separated).
 
